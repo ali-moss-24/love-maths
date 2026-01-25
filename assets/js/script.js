@@ -25,6 +25,10 @@ document.addEventListener("DOMContentLoaded", function() {
  */
 function runGame(gameType) {
 
+    //Clear and focus the answer box for the next question
+    document.getElementById("answer-box").value = ""; 
+    document.getElementById("answer-box").focus();
+
     //Creates two random numbers between 1 and 25
     let num1 = Math.floor(Math.random() * 25) +1;
     let num2 = Math.floor(Math.random() * 25) +1;
@@ -45,6 +49,12 @@ function runGame(gameType) {
    function checkAnswer() {
 
     let userAnswer = parseInt(document.getElementById("answer-box").value);
+
+     if (isNaN(userAnswer)) { 
+         alert("Please enter a number!");
+         return; 
+    }
+         
     let calculatedAnswer = calculateCorrectAnswer();
     let isCorrect = userAnswer === calculatedAnswer[0];
 
